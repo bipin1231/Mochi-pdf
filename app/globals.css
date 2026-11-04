@@ -7,7 +7,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .top{display:none}
 .desk{flex:1;min-height:0;display:grid;grid-template-columns:clamp(290px,26vw,380px) var(--chatW);justify-content:center;gap:40px}
 /* sheet of paper */
-.sheet{min-width:0;min-height:0;padding:62px 0 28px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.sheet{min-width:0;min-height:0;padding:28px 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
 .paper{flex:none;width:min(100%,calc((100dvh - 210px)*.773));aspect-ratio:8.5/11;position:relative;background:#fff;padding:10px;border-radius:6px;box-shadow:0 1px 0 #d9d0c0,0 22px 34px -14px rgba(60,40,90,.4)}
 .paper::before{content:"";position:absolute;z-index:2;top:-12px;left:50%;width:96px;height:24px;margin-left:-48px;background:rgba(255,184,212,.8);transform:rotate(-2deg);box-shadow:0 1px 2px rgba(0,0,0,.12)}
 .paper iframe{width:100%;height:100%;border:0;display:block}

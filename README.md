@@ -26,7 +26,7 @@ OpenRouter and Gemini can each provide both embeddings and chat. If you use Anth
 ### Install and run
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/bipin1231/Mochi-pdf.git
 cd mochi-pdf
 npm install
 cp .env.example .env.local

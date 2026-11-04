@@ -4,7 +4,7 @@ Mochi is a playful, keyboard-inspired PDF reader with a built-in AI chat. Upload
 
 ## Features
 
-- Upload and read PDFs in the browser, with a 20 MB upload limit.
+- Upload and read PDFs in the browser, with a 2 MB upload limit.
 - Extract selectable PDF text, split it into overlapping chunks, and search those chunks by semantic similarity.
 - Ask questions about a document and receive streamed answers with citations to retrieved pages.
 - Use OpenRouter, Google Gemini, or Anthropic for chat generation. Providers are selected automatically based on configured API keys.
@@ -75,7 +75,7 @@ The current document store is **in-memory**. Uploaded documents are not persiste
 | `/api/ingest` | `POST` | Accepts a PDF as the `file` multipart form field, extracts and indexes its text, and returns a document ID. |
 | `/api/chat` | `POST` | Accepts a document ID, question, and optional conversation history; streams an answer grounded in retrieved excerpts. |
 
-Uploads must be PDFs no larger than 20 MB. The ingestion route returns an error if a PDF has no selectable text.
+Uploads must be PDFs no larger than 2 MB. The ingestion route returns an error if a PDF has no selectable text.
 
 ## Development
 

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { extractText, getDocumentProxy } from "unpdf";
 import { embedAuto, errMsg } from "@/lib/llm";
 import { chunkPages, docs } from "@/lib/rag";
+import { MAX_PDF_SIZE_BYTES, PDF_SIZE_LIMIT_MESSAGE } from "@/lib/upload";
 
 export const runtime = "nodejs";
 
@@ -9,8 +10,8 @@ export async function POST(req: Request) {
   const file = (await req.formData()).get("file");
   if (!(file instanceof File) || file.type !== "application/pdf")
     return NextResponse.json({ error: "Please upload a PDF." }, { status: 400 });
-  if (file.size > 20_000_000)
-    return NextResponse.json({ error: "PDF is over 20 MB." }, { status: 413 });
+  if (file.size > MAX_PDF_SIZE_BYTES)
+    return NextResponse.json({ error: PDF_SIZE_LIMIT_MESSAGE }, { status: 413 });
 
   try {
     const pdf = await getDocumentProxy(new Uint8Array(await file.arrayBuffer()));

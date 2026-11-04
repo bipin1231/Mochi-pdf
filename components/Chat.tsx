@@ -2,6 +2,7 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import Mochi from "./Mochi";
 import { sfx } from "@/lib/sound";
+import { MAX_PDF_SIZE_BYTES, PDF_SIZE_LIMIT_MESSAGE } from "@/lib/upload";
 
 import Keyboard from "./Keyboard";
 
@@ -148,6 +149,10 @@ export default function Chat() {
   }
 
   async function upload(f: File) {
+    if (f.size > MAX_PDF_SIZE_BYTES) {
+      say(PDF_SIZE_LIMIT_MESSAGE);
+      return;
+    }
     setStatus("Reading and indexing"); setBusy(true);
     const fd = new FormData();
     fd.append("file", f);
@@ -250,7 +255,7 @@ export default function Chat() {
             <button className="drop" onClick={pick} disabled={busy}>
               <Icon d={I.upload} size={40} />
               <b>{status ? status.toUpperCase() : "INSERT A PDF"}</b>
-              <small>DROP A FILE HERE OR CLICK TO LOAD</small>
+              <small>DROP A FILE HERE OR CLICK TO LOAD · MAX 2 MB</small>
             </button>
           )}
         </section>
